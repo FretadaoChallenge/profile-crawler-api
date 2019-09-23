@@ -1,0 +1,33 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 10 } %>
+  username: <%= ENV["PG_USERNAME"] %>
+  password: <%= ENV["PG_PASSWORD"] %>
+
+development:
+  <<: *default
+  database: <%= ENV["PG_DATABASE_DEV"] %>
+  host: <%= ENV["PG_HOST"] %>
+
+test:
+  <<: *default
+  database: <%= ENV["PG_DATABASE_TEST"] %>
+  host: <%= ENV["PG_HOST"] %>
+
+# On Heroku and other platform providers, you may have a full connection URL
+# available as an environment variable. For example:
+#
+#   DATABASE_URL="postgres://myuser:mypass@localhost/somedatabase"
+#
+# You can use this database configuration with:
+#
+#   production:
+#     url: <%= ENV['DATABASE_URL'] %>
+#
+production:
+  <<: *default
+  database: profile-crawler-prod
+  username: profile-crawler
+  password: <%= ENV['PROFILE-CRAWLER_DATABASE_PASSWORD'] %>
+

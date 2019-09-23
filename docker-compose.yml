@@ -1,0 +1,26 @@
+version: '3.5'
+services:
+
+  db:
+    container_name: profile-crawler-db
+    restart: always
+    image: postgres:10
+    volumes:
+      - pg-data:/var/lib/postgresql
+
+  api:
+    container_name: profile-crawler
+    build: .
+    ports:
+      - 3000:3000
+    env_file:
+      - profile-crawler.env
+    depends_on:
+      - db
+    volumes:
+      - .:/profile-crawler
+      - bundle:/usr/local/bundle
+
+volumes:
+  pg-data: {}
+  bundle:
