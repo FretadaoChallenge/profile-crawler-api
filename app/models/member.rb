@@ -1,7 +1,4 @@
 class Member < ApplicationRecord
-  require 'nokogiri'
-  require 'open-uri'
-  
   include TwitterInformationsHelper
   include Shortener::ShortenerHelper
   include Rails.application.routes.url_helpers
