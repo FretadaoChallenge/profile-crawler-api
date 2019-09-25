@@ -23,11 +23,6 @@ class MembersController < ApplicationController
       render json: @member.errors, status: :unprocessable_entity
     end
   end
-
-  # Makes a Web Scrapper to get the twitter description
-  def get_twitter_descritption
-    
-  end
   
   # PATCH/PUT /members/1
   def update
