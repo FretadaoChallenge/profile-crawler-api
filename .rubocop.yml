@@ -1,0 +1,66 @@
+AllCops:
+  Exclude:
+    - 'db/migrate/*.rb'
+    - 'db/*.rb'
+    - 'lib/*.rb'
+    - 'config/*.rb'
+    - 'config/environments/*.rb'
+    - 'config/initializers/*.rb'
+    - 'Gemfile'
+    - 'Rakefile'
+    - 'lib/tasks/*'
+    - 'bin/*'
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/SymbolArray:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 110
+
+Style/StringLiterals:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Layout/Tab:
+  Enabled: false
+
+Layout/BlockAlignment:
+  Enabled: false
+
+Layout/IndentationWidth:
+  Enabled: false
+
+Layout/AlignArguments:
+  Enabled: false
+
+Layout/AlignHash:
+  Enabled: false
+
+Style/GuardClause:
+  Enabled: false
+
+Lint/UselessAssignment:
+  Enabled: false
+
+Style/RegexpLiteral:
+  Enabled: false
+
+Style/IfUnlessModifier:
+  Enabled: false
+
+Layout/EmptyLinesAroundClassBody:
+  Enabled: false
+
+Style/NegatedIf:
+  Enabled: false
+
+Security/Open:
+  Enabled: false
