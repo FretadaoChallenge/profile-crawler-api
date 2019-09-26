@@ -1,0 +1,24 @@
+language: ruby
+
+rvm:
+  - 2.6.3
+
+services:
+  - postgres
+  - docker
+
+before_script:
+  - "psql -c 'create database travis;' -U postgres"
+
+env:
+  - RAILS_ENV=test
+
+install:
+  - bundle install
+
+script:
+  - rails db:create
+  - rails db:migrate --trace
+  - rails test
+  - bundle exec rubocop
+  - docker build -t indexer-api .
