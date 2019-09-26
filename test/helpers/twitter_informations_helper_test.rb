@@ -13,7 +13,7 @@ class TwitterInformationsHelperTest < ActiveSupport::TestCase
 		HTML
 		twitter_page_html = Nokogiri::HTML(htm_twitter_page)
 		assert_equal "My name is Barry Allen, and i'm the fastest man alive",
-    							get_twitter_description(twitter_page_html)
+    							fetch_twitter_description(twitter_page_html)
 	end
 
 	test "should get a twitter username" do
@@ -26,6 +26,6 @@ class TwitterInformationsHelperTest < ActiveSupport::TestCase
 		HTML
 
 		twitter_page_html = Nokogiri::HTML(htm_twitter_page)
-		assert_equal "thalissonmelo", get_twitter_username(twitter_page_html)
+		assert_equal "thalissonmelo", fetch_twitter_username(twitter_page_html)
 	end
 end
