@@ -25,7 +25,7 @@ class Member < ApplicationRecord
 
   def shorten_twitter_url
       unless twitter_profile_address.blank?
-          shortened_url = short_url(twitter_profile_address,
+          self.shortened_url = short_url(twitter_profile_address,
           url_options: { host: 'localhost:3000' })
       end
   end
