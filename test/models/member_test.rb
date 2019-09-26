@@ -1,14 +1,12 @@
 require 'test_helper'
 
 class MemberTest < ActiveSupport::TestCase
-
   def setup
     @member = Member.new(
       name: 'Fretadão',
       twitter_profile_address: 'https://twitter.com/usefretadao'
     )
   end
-
 
   test "should save a valid member" do
     assert @member.save
@@ -25,7 +23,7 @@ class MemberTest < ActiveSupport::TestCase
   end
 
   test "should not save a member with name size bigger than 50" do
-    @member.name = "A"*51
+    @member.name = "A" * 51
     assert_not @member.save
   end
 
@@ -46,13 +44,18 @@ class MemberTest < ActiveSupport::TestCase
   test "should edit twitter_profile_address when comes without 'https://www.'" do
     @member.twitter_profile_address = "twitter.com/usefretadao"
     @member.save
-    assert_equal @member.twitter_profile_address, ("https://www.twitter.com/usefretadao")
+    assert_equal @member.twitter_profile_address, "https://www.twitter.com/usefretadao"
+  end
+
+  test "should edit twitter_profile_address when comes without 'www.'" do
+    @member.twitter_profile_address = "https://twitter.com/usefretadao"
+    @member.save
+    assert_equal @member.twitter_profile_address, "https://www.twitter.com/usefretadao"
   end
 
   test "should edit twitter_profile_address when comes without 'https://'" do
     @member.twitter_profile_address = "www.twitter.com/usefretadao"
     @member.save
-    assert_equal @member.twitter_profile_address, ("https://www.twitter.com/usefretadao")
+    assert_equal @member.twitter_profile_address, "https://www.twitter.com/usefretadao"
   end
-
 end

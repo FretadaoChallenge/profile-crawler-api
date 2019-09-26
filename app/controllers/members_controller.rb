@@ -1,13 +1,6 @@
 class MembersController < ApplicationController
   before_action :set_member, only: [:show, :update, :destroy]
 
-  # GET /members
-  def index
-    @members = Member.all
-
-    render json: @members
-  end
-
   # GET /members/1
   def show
     render json: @member
@@ -23,7 +16,7 @@ class MembersController < ApplicationController
       render json: @member.errors, status: :unprocessable_entity
     end
   end
-  
+
   # PATCH/PUT /members/1
   def update
     if @member.update(member_params)
@@ -32,18 +25,19 @@ class MembersController < ApplicationController
       render json: @member.errors, status: :unprocessable_entity
     end
   end
-  
+
   # DELETE /members/1
   def destroy
     @member.destroy
   end
-  
+
   private
+
   # Use callbacks to share common setup or constraints between actions.
   def set_member
     @member = Member.find(params[:id])
   end
-  
+
   # Only allow a trusted parameter "white list" through.
   def member_params
     params.require(:member).permit(:name, :twitter_profile_address)

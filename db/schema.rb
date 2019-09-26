@@ -15,13 +15,6 @@ ActiveRecord::Schema.define(version: 2019_09_24_121656) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "freights", force: :cascade do |t|
-    t.string "state"
-    t.float "weight_min"
-    t.float "weight_max"
-    t.float "cost"
-  end
-
   create_table "members", force: :cascade do |t|
     t.string "name"
     t.string "twitter_profile_address"
@@ -30,22 +23,6 @@ ActiveRecord::Schema.define(version: 2019_09_24_121656) do
     t.string "twitter_description"
     t.string "shortened_url"
     t.string "twitter_username"
-  end
-
-  create_table "power_generators", force: :cascade do |t|
-    t.string "name"
-    t.string "description"
-    t.string "image_url"
-    t.string "manufacturer"
-    t.integer "structure_type"
-    t.float "price"
-    t.float "height"
-    t.float "width"
-    t.float "lenght"
-    t.float "weight"
-    t.float "kwp"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "shortened_urls", id: :serial, force: :cascade do |t|

@@ -2,20 +2,40 @@ require 'test_helper'
 
 class MembersControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @member = members(:one)
-  end
-
-  test "should get index" do
-    get members_url, as: :json
-    assert_response :success
+    @member = Member.create(
+      name: 'Fretadão',
+      twitter_profile_address: 'https://twitter.com/usefretadao'
+    )
   end
 
   test "should create member" do
     assert_difference('Member.count') do
-      post members_url, params: { member: { name: @member.name, twitter_profile_address: @member.twitter_profile_address } }, as: :json
+      post members_url, params: { member: { name: "Thalisson",
+                                  twitter_profile_address: "www.twitter.com/thalissonmelo" } },
+                                  as: :json
     end
 
     assert_response 201
+  end
+
+  test "should not create with invalid twitter url" do
+    assert_no_difference('Member.count') do
+      post members_url, params: { member: { name: "Thalisson",
+                                  twitter_profile_address: "someaddress.com/thalissonmelo" } },
+                                  as: :json
+    end
+
+    assert_response 422
+  end
+
+  test "should not create with invalid name" do
+    assert_no_difference('Member.count') do
+      post members_url, params: { member: { name: "",
+                                  twitter_profile_address: "someaddress.com/thalissonmelo" } },
+                                  as: :json
+    end
+
+    assert_response 422
   end
 
   test "should show member" do
@@ -24,7 +44,9 @@ class MembersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update member" do
-    patch member_url(@member), params: { member: { name: @member.name, twitter_profile_address: @member.twitter_profile_address } }, as: :json
+    patch member_url(@member), params: { member: { name: "Thalisson",
+                                         twitter_profile_address: "www.twitter.com/thalissonmelo" } },
+                                         as: :json
     assert_response 200
   end
 

@@ -4,10 +4,7 @@ class SearchesController < ApplicationController
     def search_member
         search_result = Member.all.search(params[:search])
 
-        unless search_result.blank?
-            render json: search_result
-        end
-
+        return render json: search_result if !search_result.blank?
     end
 
 end
